@@ -1,0 +1,17 @@
+freeStyleJob('Bootstrapper-Seed-Job') {
+    label('built-in')
+    scm {
+        git {
+            branch('main')
+            remote {
+                url('git@github.com:NirupamDebnath/jenkins-jobs.git')
+            }
+        }
+    }
+    steps {
+        dsl {
+            external('jenkins-dsl/**/folders.jenkins')
+            // external('jenkins-dsl//**/*_job.jenkins')
+        }
+    }
+}
