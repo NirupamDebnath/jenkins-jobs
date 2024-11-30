@@ -10,7 +10,7 @@ freeStyleJob('Bootstrapper-Seed-Job') {
     }
     steps {
         dsl {
-            external('jenkins-dsl/**/folders.jenkins')
+            external('jenkins-dsl/**/*.jenkins')
             // external('jenkins-dsl//**/*_job.jenkins')
         }
     }
