@@ -1,0 +1,15 @@
+pipelineJob('CI/test2') {
+  definition {
+    cpsScm {
+      scm {
+        git {
+          branch('main')
+          remote {
+              url('git@github.com:NirupamDebnath/jenkins-jobs.git')
+          }
+        }
+      }
+      scriptPath('jenkinsfiles/CI/test2.jenkinsfile')
+    }
+  }
+}
