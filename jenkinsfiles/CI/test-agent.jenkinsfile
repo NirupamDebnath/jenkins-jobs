@@ -1,0 +1,27 @@
+/*
+@author Nirupam Debnath
+*/
+
+pipeline {
+  agent {
+    kubernetes {
+      inheritFrom "test-agent"
+    }
+  }
+  stages {
+    stage('Run maven') {
+      steps {
+        container('maven') {
+          sh 'mvn -version'
+          sh ' echo Hello World > hello.txt'
+          sh 'ls -last'
+        }
+        container('node') {
+          sh 'npm version'
+          sh 'cat hello.txt'
+          sh 'ls -last'
+        }
+      }
+    }
+  }
+}

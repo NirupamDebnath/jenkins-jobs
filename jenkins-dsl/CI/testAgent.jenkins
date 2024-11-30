@@ -1,4 +1,4 @@
-pipelineJob('CI/test-node-agent') {
+pipelineJob('CI/test-agent') {
   definition {
     cpsScm {
       lightweight(true)
@@ -10,7 +10,7 @@ pipelineJob('CI/test-node-agent') {
           }
         }
       }
-      scriptPath('jenkinsfiles/CI/test-node-agent.jenkinsfile')
+      scriptPath('jenkinsfiles/CI/test-agent.jenkinsfile')
     }
   }
 }
