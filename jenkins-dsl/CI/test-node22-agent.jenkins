@@ -1,4 +1,4 @@
-pipelineJob('CI/test-node22-agent') {
+pipelineJob('CI/test-node-agent') {
   definition {
     cpsScm {
       lightweight(true)
