@@ -1,6 +1,7 @@
 pipelineJob('CI/test2') {
   definition {
     cpsScm {
+      lightweight(true)
       scm {
         git {
           branch('main')
