@@ -10,7 +10,7 @@ pipelineJob('CI/test-node-agent') {
           }
         }
       }
-      scriptPath('jenkinsfiles/CI/test-node22-agent.jenkinsfile')
+      scriptPath('jenkinsfiles/CI/test-node-agent.jenkinsfile')
     }
   }
 }
