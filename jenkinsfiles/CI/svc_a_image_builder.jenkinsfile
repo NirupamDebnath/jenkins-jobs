@@ -9,7 +9,7 @@ pipeline {
     }
   }
   stages {
-    stage('Run maven') {
+    stage('Clone Repo') {
       steps {
         script {
            // The below will clone your repo and will be checked out to master branch by default.
@@ -20,6 +20,8 @@ pipeline {
            sh "git branch -a"
           }
        }
+    }
+    stage('Build package') {
       steps {
         container('node') {
           sh 'pwd'
