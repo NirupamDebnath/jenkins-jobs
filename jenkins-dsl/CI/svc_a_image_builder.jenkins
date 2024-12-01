@@ -1,4 +1,4 @@
-pipelineJob('CI/svc-a-image-builder') {
+pipelineJob('CI/svc_a_image_builder') {
   definition {
     cpsScm {
       lightweight(true)
@@ -10,7 +10,7 @@ pipelineJob('CI/svc-a-image-builder') {
           }
         }
       }
-      scriptPath('jenkinsfiles/CI/svc-a-image-builder.jenkinsfile')
+      scriptPath('jenkinsfiles/CI/svc_a_image_builder.jenkinsfile')
     }
   }
 }
