@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+    environment {
+        DOCKER_HOST = 'tcp://<minikube-docker-host>:<port>' // From minikube docker-env
+        DOCKER_CERT_PATH = '/path/to/docker/certs'         // From minikube docker-env
+        DOCKER_TLS_VERIFY = '1'                           // From minikube docker-env
+    }
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    sh 'docker build -t my-app:latest .'
+                }
+            }
+        }
+        stage('Verify Image in Minikube') {
+            steps {
+                script {
+                    sh 'docker images | grep my-app'
+                }
+            }
+        }
+        stage('Deploy to Minikube') {
+            steps {
+                script {
+                    sh '''
+                    kubectl apply -f deployment.yaml
+                    '''
+                }
+            }
+        }
+    }
+}
