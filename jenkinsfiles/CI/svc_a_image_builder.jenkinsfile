@@ -20,8 +20,17 @@ pipeline {
     stage('Build package') {
       steps {
         container('node') {
-          dir("k8s-microservices"){
-            sh "pwd"
+          dir("k8s-microservices/svc-a"){
+            sh "npm install"
+          }
+        }
+      }
+    }
+    stage('Docker Build and push') {
+      steps {
+        container('docker') {
+          dir("k8s-microservices/svc-a"){
+            sh "docker build -f ../Dockerfile -t svc-a ."
           }
         }
       }
