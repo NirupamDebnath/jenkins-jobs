@@ -20,7 +20,7 @@ pipeline {
     stage('Build package') {
       steps {
         container('node') {
-          dir("${env.WORKSPACE}/k8s-microservices"){
+          dir("k8s-microservices"){
             sh "pwd"
           }
         }
