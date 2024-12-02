@@ -17,19 +17,19 @@ pipeline {
           }
        }
     }
-    stage('Build package') {
+    stage('Node Build Image') {
       steps {
         container('node') {
-          dir("svc-a"){
+          dir("src-a"){
             sh "npm install"
           }
         }
       }
     }
-    stage('Docker Build and push') {
+    stage('Docker build and push') {
       steps {
         container('docker') {
-          dir("svc-a"){
+          dir("src-a"){
             sh "docker build -f ../Dockerfile -t svc-a ."
           }
         }
