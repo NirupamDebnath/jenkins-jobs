@@ -20,7 +20,7 @@ pipeline {
     stage('Build package') {
       steps {
         container('node') {
-          dir("${env.WORKSPACE}svc-a"){
+          dir("svc-a"){
             sh "npm install"
           }
         }
@@ -29,7 +29,7 @@ pipeline {
     stage('Docker Build and push') {
       steps {
         container('docker') {
-          dir("${env.WORKSPACE}svc-a"){
+          dir("svc-a"){
             sh "docker build -f ../Dockerfile -t svc-a ."
           }
         }
