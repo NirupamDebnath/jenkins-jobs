@@ -22,6 +22,7 @@ pipeline {
         container('node') {
           dir("src-a"){
             sh "npm install"
+            sh "npm run build"
           }
         }
       }
