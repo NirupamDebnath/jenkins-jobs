@@ -1,0 +1,16 @@
+pipelineJob('CI/svc_b_image_builder') {
+  definition {
+    cpsScm {
+      lightweight(true)
+      scm {
+        git {
+          branch('main')
+          remote {
+              url('https://github.com/NirupamDebnath/jenkins-jobs.git')
+          }
+        }
+      }
+      scriptPath('jenkinsfiles/CI/svc_b_image_builder.jenkinsfile')
+    }
+  }
+}

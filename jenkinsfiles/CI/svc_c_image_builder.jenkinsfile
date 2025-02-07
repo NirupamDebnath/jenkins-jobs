@@ -1,0 +1,40 @@
+/*
+@author Nirupam Debnath
+*/
+
+pipeline {
+  agent {
+    kubernetes {
+      inheritFrom "node-image-builder"
+    }
+  }
+  stages {
+    stage('Clone Repo') {
+      steps {
+        script {
+           // The below will clone your repo and will be checked out to master branch by default.
+           git branch: "main", url: 'https://github.com/NirupamDebnath/k8s-microservices.git'
+          }
+       }
+    }
+    stage('Node Build Image') {
+      steps {
+        container('node') {
+          dir("src-c"){
+            sh "npm install"
+            sh "npm run build"
+          }
+        }
+      }
+    }
+    stage('Docker build and push') {
+      steps {
+        container('docker') {
+          dir("src-c"){
+            sh "docker build -f ../Dockerfile -t svc-c ."
+          }
+        }
+      }
+    }
+  }
+}
